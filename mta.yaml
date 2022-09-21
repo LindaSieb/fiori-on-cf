@@ -13,6 +13,10 @@ modules:
     parameters:
       service-key:
         name: webdriveriotesting-repo-host-key
+  - name: webdriveriotesting-uaa
+    parameters:
+      service-key:
+        name: webdriveriotesting-uaa-key
   parameters:
     content:
       instance:
@@ -20,6 +24,11 @@ modules:
         - Name: webdriveriotesting_html_repo_host
           ServiceInstanceName: webdriveriotesting-html5-srv
           ServiceKeyName: webdriveriotesting-repo-host-key
+          sap.cloud.service: webdriveriotesting
+        - Authentication: OAuth2UserTokenExchange
+          Name: webdriveriotesting_uaa
+          ServiceInstanceName: webdriveriotesting-xsuaa-srv
+          ServiceKeyName: webdriveriotesting-uaa-key
           sap.cloud.service: webdriveriotesting
         existing_destinations_policy: ignore
   build-parameters:
@@ -67,6 +76,13 @@ resources:
     service: destination
     service-name: webdriveriotesting-destination-service
     service-plan: lite
+- name: webdriveriotesting-uaa
+  type: org.cloudfoundry.managed-service
+  parameters:
+    path: ./xs-security.json
+    service: xsuaa
+    service-name: webdriveriotesting-xsuaa-srv
+    service-plan: application
 - name: webdriveriotesting-repo-host
   type: org.cloudfoundry.managed-service
   parameters:
