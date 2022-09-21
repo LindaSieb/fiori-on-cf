@@ -1,6 +1,6 @@
-describe('Test Sample App', () => {
-    it('should return valid title on the page', async () => {
+describe('Test Application', () => {
+    it('should return correct title on the page', async () => {
         await browser.url(`/`)
-        await expect($('#container-webdriveriotesting---WebDriverIOTesting--page-title')).toHaveTextContaining('Testing with WebDriverIO');
+        await expect($('#container-webdriveriotesting---WebDriverIOTesting--page-title-inner')).toHaveTextContaining('Testing with WebDriverIO');
     });
 });
