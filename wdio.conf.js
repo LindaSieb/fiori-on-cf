@@ -52,7 +52,17 @@ exports.config = {
     capabilities: [{
         maxInstances: 5,
         browserName: 'chrome',
-        acceptInsecureCerts: true
+        acceptInsecureCerts: true,
+        'goog:chromeOptions': {
+             args: [
+                 '--no-sandbox',
+                 '--disable-infobars',
+                 '--headless',
+                 '--disable-gpu',
+                 '--disable-dev-shm-usage',
+                 '--window-size=1440,735'
+            ],
+        }
     }],
     //
     // ===================
